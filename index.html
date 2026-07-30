@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Pan America — Product Catalogue · Verifiabel Connect</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  background: #FFFFFF;
+  color: #12224A;
+  max-width: 480px;
+  margin: 0 auto;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* HEADER */
+.header {
+  padding: 20px 16px 0;
+}
+.header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.header-brand {
+  font-size: 10px;
+  font-weight: 700;
+  color: #8A92A6;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.verifiabel-tag {
+  font-size: 10px;
+  font-weight: 700;
+  color: #C8102E;
+  letter-spacing: 0.3px;
+}
+.verifiabel-tag a {
+  color: #C8102E;
+  text-decoration: none;
+}
+
+/* HERO TEXT */
+.hero {
+  padding: 0 16px 20px;
+  border-bottom: 1px solid #F0EEE9;
+}
+.hero-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #C8102E;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.hero-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #12224A;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero-body {
+  font-size: 13px;
+  color: #5A6478;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #F0F8FF;
+  border: 1px solid #B5D4F4;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #185FA5;
+}
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C8102E;
+}
+
+/* COLUMN LABELS */
+.col-labels {
+  display: grid;
+  grid-template-columns: 56px 1fr 140px;
+  gap: 0;
+  padding: 8px 16px;
+  background: #F5F3EE;
+  border-bottom: 1px solid #E4E0D8;
+}
+.col-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #8A92A6;
+  text-transform: uppercase;
+}
+.col-label-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.col-label-btn {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #8A92A6;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* ROWS */
+.row {
+  display: grid;
+  grid-template-columns: 56px 1fr 140px;
+  gap: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid #F0EEE9;
+  align-items: center;
+}
+.row:nth-child(even) { background: #FAFAF8; }
+.row:nth-child(odd)  { background: #FFFFFF; }
+
+.thumb-wrap {
+  width: 42px;
+  height: 52px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #E4E0D8;
+  flex-shrink: 0;
+}
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.row-info {
+  padding: 0 8px;
+}
+.row-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #12224A;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+.row-sku {
+  font-size: 10px;
+  color: #8A92A6;
+  margin-bottom: 3px;
+}
+.row-mat {
+  font-size: 10px;
+  color: #5A6478;
+  font-style: italic;
+}
+
+.row-btns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+.btn-customer, .btn-sa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px 4px;
+  border-radius: 8px;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.05);
+}
+.btn-customer {
+  background: #EBF4FF;
+  border: 1px solid #B5D4F4;
+  color: #185FA5;
+}
+.btn-customer:active { background: #D4E9FF; }
+.btn-sa {
+  background: #F5F3EE;
+  border: 1px solid #D0CECA;
+  color: #3A3028;
+}
+.btn-sa:active { background: #EDE9E3; }
+.btn-customer span, .btn-sa span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+.btn-customer svg { color: #185FA5; }
+.btn-sa svg { color: #3A3028; }
+
+/* FOOTER */
+.footer {
+  padding: 20px 16px 32px;
+  text-align: center;
+  border-top: 1px solid #F0EEE9;
+}
+.footer-brand {
+  font-size: 12px;
+  font-weight: 700;
+  color: #12224A;
+  margin-bottom: 4px;
+}
+.footer-tagline {
+  font-size: 11px;
+  color: #8A92A6;
+  margin-bottom: 4px;
+}
+.footer-url {
+  font-size: 11px;
+  color: #C8102E;
+}
+.footer-url a {
+  color: #C8102E;
+  text-decoration: none;
+}
+.footer-divider {
+  width: 32px;
+  height: 2px;
+  background: #C8102E;
+  margin: 12px auto;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-meta">
+    <div class="header-brand">Pan America</div>
+    <div class="verifiabel-tag">Powered by <a href="https://verifiabel.ai" >Verifiabel</a></div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Verifiabel Connect</div>
+  <h1 class="hero-headline">Increasing sell-through at the MBO counter.</h1>
+  <p class="hero-body">Enabling product information through QR scan — for the customer, and to help the store staff at your MBOs sell in a way they've never been able to.</p>
+  <div class="pill">
+    <div class="pill-dot"></div>
+    14 styles live
+  </div>
+</div>
+
+<div class="col-labels">
+  <div class="col-label"></div>
+  <div class="col-label">Product</div>
+  <div class="col-label-btns">
+    <div class="col-label-btn">Customer</div>
+    <div class="col-label-btn">Staff</div>
+  </div>
+</div>
+
+
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Smart Casual Check Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Smart Casual Check Shirt</div>
+        <div class="row-sku">DR102706</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DR102706.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DR102706_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Smart Casual Navy Check Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Smart Casual Navy Check Shirt</div>
+        <div class="row-sku">DR102226</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DR102226.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DR102226_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Navy Printed Casual Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Navy Printed Casual Shirt</div>
+        <div class="row-sku">DP996012</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DP996012.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DP996012_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Casual Pin Stripe Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Casual Pin Stripe Shirt</div>
+        <div class="row-sku">DS060877</div>
+        <div class="row-mat">100% Cotton Slub</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DS060877.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DS060877_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Casual Solid Textured Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Casual Solid Textured Shirt</div>
+        <div class="row-sku">DL995974</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DL995974.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/DL995974_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Stitch Effect Mandarin Collar Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Stitch Effect Mandarin Collar Shirt</div>
+        <div class="row-sku">CH990566</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/CH990566.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/CH990566_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCABkAFADASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAABgcBBQADBAL/xABDEAACAQMCAgUGCgcJAQAAAAABAgMABBEFIRIxBhNBUbEHFCJhcXMjJDJjcoGRocHRFTQ2Q5Ky4SUmMzVUVYKi0vH/xAAYAQADAQEAAAAAAAAAAAAAAAABAgMABP/EAB8RAAICAgMBAQEAAAAAAAAAAAABAhEDEiExQVEEMv/aAAwDAQACEQMRAD8AXukbaja+9Xxp1dCAWhue7rh4Uk9LONQtver407ugIJtrw90w8KiyqLO8/aS193/6pf8AltPDJpxPLqn/AJhR/ej+8lmfm/zoH8sVqLy90i2MixiQModuQPEKydBavgV8FwhkVLS1uLiVdyFGcevajvSJ7i6t+K8tJLSdThopOeOw+w1PRnSbzStJKWTQeddc3WmYErseweyru/E0jpdzzW8plXhRoU4cIvIHvIJNIsqlKkUlhcI2zmscfDAj95+Aq7gvTZ2VkTMEWW8ZCG5MeEYFU1kBif3n4Ctmtnh0nSyxAA1PJJ7NhTEgg6fSBbabcZFs5A+2l/o1payaVDcSShZnHEM7DHYDRT081W3mkkjT0lEZjkYcgTtiga283bhj4wOBdgrdgpJyXQPSi0sZv7bJ/er408+ga8FreD54fy0itL2vbf3q+NPLoF+rXnvl8KozFnfftDZ/Q/OgHy2Z/s09pR/5lo91EhNetHY4VY8k9w3pfdJtfXWrtZBbIqQgrCW3ZQe32nApscHJ8DNWjh067uW0GGVjxMicEwYkNkd/1Yq000LdWMbQyxZUkFOPOO3nyoSm67icI54XGGB7a77C7ms4+qhbhTHIDme+nx/lqTbZWeTaKQSW8LxGdZUK5fIz27DlUa5voumg4/zMc/YKqNO1+4guVhuJOsgY+mjAcquNf4f0Pp/Acr+kgQe8cIoZMejJeGrpppTx6hOTM7RtCZmcqMcWOVAUc0YhU8Sggb8WFxvyxTQ8oLcHnOd/gGx/DSktLA3WnSMrO8gTjYKhbA7zUJRilbEbPOnfrcHvF8ad/k/OLe9yDjrV5D1UkLA4uoPeL408egB+LX3vV8DTsKNvS2YQmSXJHDaOfEfjSntpw/HGx9NCMj1dlM3yjyCKxbfBeNUH1v8A0pRREnXmCn0epJb14IxV8PCbH8LF2HFt3Vhf215wTg94OajPpj110WA4usLamyk7KikevejBroTdE9MBOXj1AKfs28KEHgbzu5uwwCwRKzDvBbH3Zq2tbljpUcbRuFF4kitjbljHtqeRXFoAZ9ObqETmadyqDA4AMmTkMUIW911lwx02PqYpWaECIbcOO08zRD07iSZGkYcRSFyoPIHHOlVbzvHZB1Zg2Bgg4NcMsblzYr7Omw2uYfpr408OgH+DfD5xfA0ktPUm6hHzi+NPDoGnBDfZ7ZE8DTsZHF5UVD2CA9vDj1bmlNpUbG/uXduUYX17n+lNvym7WUP1cvrpWaTn41OQPTkCr27Afma6cX8h+HZJjOBWod9S2ckntqE2qyCybZl85u4nAKzWjrg94IIroUKmmSAAAiVMfbVUzN+kY+HO4ZdvWD91FNtoVzqXR5p7OB3nNzgADJ4VUn2Dc4pMlJNi+E9Orq4MNn1cnVPNEeLbIxjlQObHjGCyY7djvR30n0bW9QS06jTLg9RHwtnAJOBy3qiXo10g/wBouf8Ar+dciSFaKbTh8ZhPzi+NO/oQ2I73jYD018DSU00fGoB3yL4inh0PVYPPC7Ddlx99BjIq/KMjXKW8UcbsW9WAOdLiO2eygS3lXhdcsRnvY02Ol1tcXoV7ZAyJGQwDgMd+wUstYVkvjxKyAxLhXUgru2x9frqmGb218K0tbOBmBG1QDkZqFB3qSCBjFdSEZ3dH9LW/knlaXhkIIiX2cyfr2ox02+1HS7GOyiFv8FkEKCcnO9B2k8UdrPIwz1KjbhwOHiJx7ckkn1CmxHpUKqAlzcgdmJMfhXLNz2e3QZ66quwdn1zVxvwoo9cX9K0HXtWbk6D/AIUUvpFu3y57on3prwujWI3brn+kxNLaJUwNsvJ2kE8cj6kzcDBsCEb4Oe+jy1srKNCBagk82Y5JoeA148kjX6hXRBb62R6TgH2rQoNhAba1/wBLH9aiqzVtA0zUGWWe1XrFHDxKSu3dsa0eZ6wxx50F9j1vtbTUIp0a4ug8Y+UpYnNZcdBKiToppSOoS0U5PazfnXbJ0R0UyMRZIFwMAM2331auvHJt/wDK0afFLAHWaVpCcEFkIx9tNb+ms8WnRjR4bSUiyQqxAZWYkH271aEhVAUqO7LVyavEJdHciXhUuobhGTj8N6Em08E7SNjvArPkWw1eeNflSxqO34QCtL6lZR/Lu7ce2YUFvpyb5Z/4R+VQNJgdfSklPqwv5UKNYeIoI7ftrYoFZWUo5JRe6vLxpwE8I5VlZWAarZQzni39HNe3jRY2KooOOYFZWUWAmxHEk6nkFzjv3qQi5yEUH2VlZWMesDuH2V4KId+BM/RFZWVjH//Z" alt="Textured Solid Mandarin Collar Short Kurta" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Textured Solid Mandarin Collar Short Kurta</div>
+        <div class="row-sku">KU993517</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/KU993517.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/KU993517_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Smart Casual Check Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Smart Casual Check Shirt</div>
+        <div class="row-sku">SM112445</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/SM112445.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/SM112445_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Corporate Formal Solid Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Corporate Formal Solid Shirt</div>
+        <div class="row-sku">CV890553</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/CV890553.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/CV890553_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Printed Cotton Linen Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Printed Cotton Linen Shirt</div>
+        <div class="row-sku">LN995065</div>
+        <div class="row-mat">Cotton-Linen Blend</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/LN995065.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/LN995065_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Pure Linen Solid Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Pure Linen Solid Shirt</div>
+        <div class="row-sku">LN900039</div>
+        <div class="row-mat">16 Lea Pure Linen</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/LN900039.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/LN900039_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCABkAFADASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAABgACBAUHAwH/xAA+EAACAQMDAQQECwcEAwAAAAABAgMABBEFEiExBhNBUWFxgbEHFBUiMkNic6GywSMlM0JScpEkNDWSgqLR/8QAGQEAAgMBAAAAAAAAAAAAAAAAAgMABAUB/8QAIREAAgIBBAMBAQAAAAAAAAAAAAECEQMSEyExBEFRIkL/2gAMAwEAAhEDEQA/AC0pTDHU0x0wpW6pmW4jrWLMCggnNwlVc9ybS4u+8lRLW5mYSNjLYGTx7qmXF8LaNoF3byckjr06D/7VbcWMuoafNKu1ISNoLHAOeOPIDzrB8pp5pNGt49rErALXO3V2dTzptopWM7YoyhfC+GR4Z/GrrR/hGv8AVom07VokguTkgRoYzIvkQfL0dal9mNLudI02C3TT4py7yGW673BXDNjI6ngdfTUCTSprvXtPvr2NEKiU7EbdwRxz581V3FelFrZajqDrsrqC6l2Ie7hjMaus4Xd1wCR+lAPbKVn0RkYLgzR8+2jTsCuz4NolHTu5/wAzUGdqIg2mHcSR3ice2msSujX7YBbCLPJ7lfy1k+uOTpV2AjZ7l/D0VrFqoFlFgfUr+Wst1k/uu9+4f3Go/REH5UYphXxJA9dSNmaBu0+tr8bhO7bao7K3TORncCPT4GtXP5McMbZm48bm6DS3toWmEzxhpcbEb+kEHmq3vnudI1HvVGI2VEC8AD0UzsZOlwJu7UcOgwGznhqJNN0WG3gkjuykpkbcyfyjHh6azpS3p6orsvwW3GmwBupJUswjPJtbOCq7iR4D1eryrnps0jyyJ3btsjyCfIHH60W6/pdzd3rzCJY4kQRxBB1UdN3tJxjpUWx0p7ORpBKjGTiTK+XTb6ufXS4+LLd56+j3njs98nDsJk/BzH4Du58f9moN7TL+6zyfpp4+mtKWJ1t5IImCRyBgyhRjnqR6aAO2Nq1pZSRMScOuDjqM03LicOREJJqjU7YZsYc8/sV/KKy7WUX5KveB/Af3GtStP9jD9yv5RWX62MaTe/cP7jS36DRocykQyFcBtpwScDOPPwrHtWulhvMyBmvpG2P1wz54PkeOOOtaJreuRz6RBc6e+6CaUxzK6YYrg54NZXrDuJ4pLqUTxpKBGAcSEZzgnzFd8zIpySK2GLirDr4KtQJupbGaIrKq94u1Rghcgknzy1aTaXSTNIv86HBB8j0rMvgqK3Op6jdqrDuoo4xu6gM2fb0NGiMy62VjDcwMSV/uGB7/AMad4sbxhzfJdXUgCFc4zxUQ20PdbySCc9DXObcJY0YlmUgHx5p0zBSqHwX8asLhC2RpHEexf5nbAFCPwlRH5ISVcZ71VJ9tFVx851cfV/O/Q++qjtvbi67M3nGTGolH/ic0GRXFhR4YVWYzYQZJP7Ffyisv1pR8lXv3L+PoNahZA/EIOfqV8Psisy1tf3TffO+ofw9Bqk/RYRU3facPeyvZW7W7d2sgVGyQrDzPr59dQNI0601x1kZZIma7hhdAw24cnJHl0qzg7GpdXLd5dOEECKCsLgnYBkHPnXKG6TRLO2jtIFLCdLkszcsw5APoGaXttu2C39NB7JaJb6Jp12tqWZpZE7xj1OF495q105pF1G4uFzsVAhwM7j1A/EmoXY++l1Psz8cnREeSZwAvQ4wPGvXn1uwSOfSdMj1CKS4K3IMux0GQAV8wBnNX8TUMVMVJXLgu41UqHCFWJ5Ldc1DnIL8HPmaHLr4SdPQSJqWn6hYvG20rPCRnrgj14qGe3+kyWktzaQXlz3bKjJHFyS2cflNGpL2zlMJJyTDcbR0hbH+Kh347vQrxrk7gbd9y9M/NPFcez+rXGsWlzPPpdxYhiEgWf6TqfpMRxjpUPtrqcVnZJZs2XmG4qvUIOpPkM4oMmRQxymRLlIM9PcNYwKDyIUH/AKCs21z/AIm/+4k9xou7Oan39rAGmDkjhR5eHt4NB+uMfkq+weDA/n5H0VSUtSTLCNADHriQ/hWYa52Z1zfi2sXnUbgvdsOmTjqR4YrSzLlRvif1YzSTY/1WP7lpt0DVlf2Cs5bXslBb3ETxXMbHvVkGCrMckD8KJ9KZW06I7GQHJKkcg58aF9YvJrYhYZZC2ARHEccZ5YjPOAKINJmU6cpXHXOB05AP60Ucql+fhJYnFavpLnghuF2yokgHQOAw/wAHpXKK2EX8GNEH2FA91cp5WRWcYwBmu1sWZS2PbzRgFZr8vxC0e8XazQkF8jllJ5GfOsR7TXs+p6rJcTu6t1UKcbQQOPVW0dqonm0iZI1LMSp2jyzWJ9pUa21BwUYHavG0+VDL9cMgU9gNYuZL6OK4lDog2IWUfNA9XPjVlr/GjX+Oot5Pymg/sNI41MFo3AbAVtp5NX+v6nE2mXsKHLtC4AA56UlqmNj0aLtXxkP/AGroqBR809fM5pu6AeKfhSDxOwCupPkKNgohanZfHkUb3hkXIDoecHqKsNLVre3ELNuwgGduM49FLAFSLeMOjbeq8+ypCtVnZN6as8ueYyOOeKnWQHxVScE81Am5XFTbBv8AS7T4MaO+aArgh6gcIxCB+fokZzUBXlYHbbxe0YqwuDg8+dcDg+HtoJ9hR6IfxMsQ3cRxt4mNtvupxtrpV/Z3Eb/ZkGfxp8guF5QKw9A5qG91MMhiBj7NCdGjk9BXSPjDDgilSowSepzipFuSsUxBPAHHnSpUMewpdDZTxXS3kZYzj+r9KVKi/oH+TjMxLjPiKYxKnApUqGXYUeh+BimOqk/OUH1ilSrh0//Z" alt="Corporate Formal Stripe Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Corporate Formal Stripe Shirt</div>
+        <div class="row-sku">KC692590</div>
+        <div class="row-mat">35/65 PC Blend</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/KC692590.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/KC692590_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Printed Partywear Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Printed Partywear Shirt</div>
+        <div class="row-sku">WC893768</div>
+        <div class="row-mat">100% Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/WC893768.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/WC893768_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="thumb-wrap">
+        <img src="data:image/jpeg;base64,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" alt="Premium Egyptian Cotton Stripe Shirt" class="thumb-img">
+      </div>
+      <div class="row-info">
+        <div class="row-name">Premium Egyptian Cotton Stripe Shirt</div>
+        <div class="row-sku">GZ110504</div>
+        <div class="row-mat">100% Giza Cotton</div>
+      </div>
+      <div class="row-btns">
+        <a href="https://smartsolve-global.github.io/pan-america-connect/GZ110504.html"  class="btn-customer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          <span>Customer</span>
+        </a>
+        <a href="https://smartsolve-global.github.io/pan-america-connect/GZ110504_SA.html"  class="btn-sa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span>Store staff</span>
+        </a>
+      </div>
+    </div>
+
+<div class="footer">
+  <div class="footer-divider"></div>
+  <div class="footer-brand">Verifiabel Connect</div>
+  <div class="footer-tagline">Next-gen sales enablement for MBO retail</div>
+  <div class="footer-url"><a href="https://verifiabel.ai" >verifiabel.ai</a></div>
+</div>
+
+</body>
+</html>
